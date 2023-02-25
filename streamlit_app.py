@@ -66,13 +66,21 @@ streamlit.dataframe(fruityvice_normalized)
 
 streamlit.write('The user entered ', fruit_choice)
 
-fruit_choice1 = streamlit.text_input('What fruit would you like to add?','jackfruit')
-streamlit.write('Thanks for adding ', fruit_choice1)
+def insert_row_snowflake(new_fruit):
+     with my_cnx.cursor() as my_cur:
+          my_cur.execute("insert into fruit_load_list values('from streamlit')")
+          return "Thanks for adding " + new_fruit
 
-streamlit.stop()
-my_cur.execute("insert into fruit_load_list values('from streamlit')")
-fruityvice_response1 = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice1)
+fruit_choice1 = streamlit.text_input('What fruit would you like to add?')
+if streamlit.button("Add a fruit to the list'):
+       my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+       back_from_function = insert_row_snowflake(fruit_choice1)
+       streamlit.text(back_from_function)
+
+#streamlit.stop()
+
+#fruityvice_response1 = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice1)
 #streamlit.text(fruityvice_response)
-fruityvice_normalized1 = pandas.json_normalize(fruityvice_response1.json())
+#fruityvice_normalized1 = pandas.json_normalize(fruityvice_response1.json())
 # write your own comment - what does this do?
-streamlit.dataframe(fruityvice_normalized1)
+#streamlit.dataframe(fruityvice_normalized1)
