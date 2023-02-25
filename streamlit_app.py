@@ -49,10 +49,10 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
 streamlit.dataframe(fruityvice_normalized)
 
-fruit_choice1 = streamlit.text_input1('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruit_choice1)
-fruityvice_response1 = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice1)
-#streamlit.text(fruityvice_response)
-fruityvice_normalized1 = pandas.json_normalize(fruityvice_response1.json())
-# write your own comment - what does this do?
-streamlit.dataframe(fruityvice_normalized1)
+fruit_choice1 = streamlit.text_input('What fruit would you like information about?','Kiwi')
+#streamlit.write('The user entered ', fruit_choice1)
+#fruityvice_response1 = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice1)
+##streamlit.text(fruityvice_response)
+#fruityvice_normalized1 = pandas.json_normalize(fruityvice_response1.json())
+## write your own comment - what does this do?
+#streamlit.dataframe(fruityvice_normalized1)
